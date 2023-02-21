@@ -1,0 +1,27 @@
+import openai
+import json
+
+# set up OpenAI API key
+openai.api_key = "YOUR_API_KEY_HERE"
+
+# define prompt
+prompt = (f"Based on demographics and sales data, recommend the best location and products for a new coffee shop in downtown New York City. "
+          f"Here's the available data: \n"
+          f"- 70% of the population in downtown NYC are millennials \n"
+          f"- The average household income is $80,000 per year \n"
+          f"- The top-selling coffee products in the area are espresso and latte \n"
+          f"- The average daily sales for a coffee shop in the area is $2,000 \n"
+          f"Please generate a detailed report with specific recommendations.")
+
+# generate text
+response = openai.Completion.create(
+    engine="text-davinci-002",
+    prompt=prompt,
+    temperature=0.5,
+    max_tokens=1024,
+    n=1,
+    stop=None,
+)
+
+# print response
+print(response.choices[0].text)
