@@ -2,7 +2,7 @@ import openai
 import json
 
 # Set up OpenAI API key
-openai.api_key = "YOUR_API_KEY_HERE"
+openai.api_key = "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"
 
 # Define prompt and parameters
 prompt = "Generate a short story about a dragon"
