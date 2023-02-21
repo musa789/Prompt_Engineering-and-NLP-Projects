@@ -1,23 +1,24 @@
 import openai
 import requests
 from PIL import Image
+from io import BytesIO
 
-# Set up OpenAI API key
-openai.api_key = "Ysk-CTHF4HkF9EOVKxqnGeDFT3BlbkFJMgmA0pxddJwZuKUFDRKE"
+# Set up OpenAI API credentials
+openai.api_key = "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"
 
-# Define prompt and parameters
-prompt = "Generate an image of a cat wearing a hat"
-params = {
-  "model": "image-alpha-001",
-  "prompt": prompt,
-  "size": "1024x1024",
-  "response_format": "url"
-}
+# Generate image using Dall-E API
+response = openai.Image.create(
+    prompt="beautiful website landing page for fleet management device",
+    n=1,
+    size="1024x1024",
+    response_format="url",
+    api_key=openai.api_key,
+)
 
-# Call OpenAI API to generate image
-response = openai.Image.create(**params)
+# Print response contents
+print(response)
 
 # Download and display image
-img_data = requests.get(response.url).content
+img_data = requests.get(response['data'][0]['url']).content
 img = Image.open(BytesIO(img_data))
 img.show()
