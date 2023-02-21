@@ -1,0 +1,23 @@
+import openai
+import requests
+from PIL import Image
+
+# Set up OpenAI API key
+openai.api_key = "Ysk-CTHF4HkF9EOVKxqnGeDFT3BlbkFJMgmA0pxddJwZuKUFDRKE"
+
+# Define prompt and parameters
+prompt = "Generate an image of a cat wearing a hat"
+params = {
+  "model": "image-alpha-001",
+  "prompt": prompt,
+  "size": "1024x1024",
+  "response_format": "url"
+}
+
+# Call OpenAI API to generate image
+response = openai.Image.create(**params)
+
+# Download and display image
+img_data = requests.get(response.url).content
+img = Image.open(BytesIO(img_data))
+img.show()
