@@ -2,7 +2,7 @@ import openai
 import json
 
 # set up OpenAI API key
-openai.api_key = "YOUR_API_KEY_HERE"
+openai.api_key = "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"
 
 # define prompt
 prompt = (f"Based on demographics and sales data, recommend the best location and products for a new coffee shop in downtown New York City. "
