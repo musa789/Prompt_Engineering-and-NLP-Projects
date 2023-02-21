@@ -1,0 +1,25 @@
+import openai
+import json
+
+# Set up OpenAI API key
+openai.api_key = "YOUR_API_KEY_HERE"
+
+# Define prompt and parameters
+prompt = "Generate a short story about a dragon"
+params = {
+  "engine": "davinci",
+  "temperature": 0.8,
+  "max_tokens": 100,
+  "top_p": 1,
+  "frequency_penalty": 0,
+  "presence_penalty": 0
+}
+
+# Call OpenAI API to generate text
+response = openai.Completion.create(
+  prompt=prompt,
+  **params
+)
+
+# Print response text
+print(response.choices[0].text.strip())
